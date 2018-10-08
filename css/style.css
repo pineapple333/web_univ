@@ -66,3 +66,25 @@ form, .content {
   border: 1px solid #3c763d;
   margin-bottom: 20px;
 }
+
+th, td {
+	width: 50%;
+  padding: 10px 15px;
+  vertical-align: middle;
+  text-align: middle;
+}
+thead {
+  background: #395870;
+  color: #fff;
+}
+tbody tr:nth-child(even) {
+  background: #f0f0f2;
+}
+td {
+  border-bottom: 1px solid #cecfd5;
+  border-right: 1px solid #cecfd5;
+}
+td:first-child {
+  border-left: 1px solid #cecfd5;
+}
+}

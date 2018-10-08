@@ -37,10 +37,76 @@
 
     <!-- logged in user information -->
     <?php  if (isset($_SESSION['login'])) : ?>
-      <p>Welcome <strong><?php echo $_SESSION['login']; ?></strong></p>
+
+      <p>Welcome <strong>
+        <?php
+           echo $_SESSION['login'];
+        ?>
+        </strong></p>
       <p> <a href="index.php?logout='1'" style="color: red;">logout</a> </p>
     <?php endif ?>
 </div>
+
+<?php
+$con = mysqli_connect("127.0.0.1", "root", "", "testing");
+if (!$con)
+  {
+  die('Could not connect: ' . mysqli_error());
+  }
+ $sql = 'SELECT * FROM person';
+ $res = mysqli_query($con, $sql);
+?>
+
+  <table class="header">
+    <caption class="title">All users</caption>
+    <thead>
+      <tr>
+        <th>Number</th>
+        <th>login</th>
+        <th>fname</th>
+        <th>lname</th>
+        <th>role</th>
+      </tr>
+    </thead>
+    <tbody>
+    <?php
+  if($_SESSION['login'] == "admin_log"){
+    $no   = 1;
+    $total  = 0;
+    while ($row = mysqli_fetch_assoc($res))
+    {
+      echo 
+      '<tr>
+        <td>'.$no.'</td>
+        <td>'.$row['login'].'</td>
+        <td>'.$row['fname'].'</td>
+        <td>'.$row['lname'].'</td>
+        <td>'.$row['role'].'</td>
+      </tr>';
+      $no++;
+    }
+  }else{
+    $no   = 1;
+    $login = $_SESSION['login'];
+    $sql = "SELECT * FROM person WHERE login='$login'";
+    $res = mysqli_query($con, $sql);
+    if (mysqli_num_rows($res) == 1) {
+      while ($row = mysqli_fetch_assoc($res))
+      {
+        echo 
+        '<tr>
+          <td>'.$no.'</td>
+          <td>'.$row['login'].'</td>
+          <td>'.$row['fname'].'</td>
+          <td>'.$row['lname'].'</td>
+          <td>'.$row['role'].'</td>
+        </tr>';
+        $no++;
+      }
+    }
+  }?>
+    </tbody>
+</table>
     
 </body>
 </html>
