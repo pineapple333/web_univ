@@ -60,7 +60,7 @@ if (!$con)
  $sql = 'SELECT * FROM person';
  $res = mysqli_query($con, $sql);
 ?>
-  <table class="header">
+  <table class="content">
     <caption class="title">All users</caption>
     <thead>
       <tr>
@@ -94,11 +94,6 @@ if (!$con)
     mysqli_close($db);
   ?>
     </tbody>
-    <?php
-    if ($_SESSION['login']==='admin_log'){
-        '<p> <a href="register.php?submit="1"" style="color: red;">register someone</a> </p>';
-    }
-    ?>
 </table>
 
 </body>

@@ -1,8 +1,6 @@
+<?php include('server.php') ?>
 <?php
 session_start();
-if(isset($_GET['submit'])){
-     header('location: index.php');
-  }
   if(isset($_POST['submit'])){
   	$login = $_POST['login'];
     $role = $_POST['role'];
@@ -14,10 +12,12 @@ if(isset($_GET['submit'])){
   			  VALUES('$login', '$fname', '$lname', '$role', '$password_1')";
   	if(!mysqli_query($db, $query)){
   		die('error inserting new record');
+  	}else{
+  		echo $newrecord = '1 record added to the database';
   	}
-  	$newrecord = '1 record added to the database';
+  	mysqli_close($db);
   }
-  ?>
+?>
 <!Doctype html>
 <html>
 <head>
@@ -54,10 +54,7 @@ if(isset($_GET['submit'])){
 			<label>Submit</label>
 			<button type="submit" name="submit" class="btn">Register</button>
 		</div>
-		<p> <a href="register.php?submit='1'" style="color: red;">Go back to your web page</a> </p>
+		<p> <a href="admin.php?submit='1'" style="color: red;">Back to 'admin' page</a> </p>
 	</form>
-	<?php
-	echo $newrecord;
-	?>
 </body>
 </html>
