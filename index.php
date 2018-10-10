@@ -1,5 +1,5 @@
-<?php 
-  session_start(); 
+<?php include('server.php') ?>
+<?php  
 
   if (!isset($_SESSION['login'])) {
     $_SESSION['msg'] = "You must log in first";
@@ -10,6 +10,11 @@
     unset($_SESSION['login']);
     header("location: login.php");
   }
+
+  if(isset($_GET['submit'])){
+     header('location: login.php');
+  }
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -23,7 +28,6 @@
   <h2>Home Page</h2>
 </div>
 <div class="content">
-    <!-- notification message -->
     <?php if (isset($_SESSION['success'])) : ?>
       <div class="error success" >
         <h3>
@@ -56,7 +60,6 @@ if (!$con)
  $sql = 'SELECT * FROM person';
  $res = mysqli_query($con, $sql);
 ?>
-
   <table class="header">
     <caption class="title">All users</caption>
     <thead>
@@ -70,11 +73,14 @@ if (!$con)
     </thead>
     <tbody>
     <?php
-  if($_SESSION['login'] == "admin_log"){
+  
     $no   = 1;
     $total  = 0;
     while ($row = mysqli_fetch_assoc($res))
     {
+        if($row['login']==='admin_log'){
+            continue;
+        }
       echo 
       '<tr>
         <td>'.$no.'</td>
@@ -85,28 +91,15 @@ if (!$con)
       </tr>';
       $no++;
     }
-  }else{
-    $no   = 1;
-    $login = $_SESSION['login'];
-    $sql = "SELECT * FROM person WHERE login='$login'";
-    $res = mysqli_query($con, $sql);
-    if (mysqli_num_rows($res) == 1) {
-      while ($row = mysqli_fetch_assoc($res))
-      {
-        echo 
-        '<tr>
-          <td>'.$no.'</td>
-          <td>'.$row['login'].'</td>
-          <td>'.$row['fname'].'</td>
-          <td>'.$row['lname'].'</td>
-          <td>'.$row['role'].'</td>
-        </tr>';
-        $no++;
-      }
-    }
-  }?>
+    mysqli_close($db);
+  ?>
     </tbody>
+    <?php
+    if ($_SESSION['login']==='admin_log'){
+        '<p> <a href="register.php?submit="1"" style="color: red;">register someone</a> </p>';
+    }
+    ?>
 </table>
-    
+
 </body>
 </html>

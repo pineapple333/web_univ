@@ -18,9 +18,8 @@ Password: <input type="text" name="pwd" /><br><br>
                 <option value="Tester">Tester</option>
                 <option value="DevOps">DevOps</option>
 </select>
-<input type="file" name="image"/><br><br>
+<input type="file" name="file3"/><br><br>
 <button type="submit" name="upload" value="Upload image">UPLOAD</button>
 </form>
-
 </body>
 </html>

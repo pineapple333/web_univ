@@ -8,23 +8,25 @@ if (!$con)
   {
   die('Could not connect: ' . mysql_error());
   }
-$image = $_FILES['image']['name'];
-$fileTmpName = $_FALES['file']['tmp_name'];
-$fileName = $_FILES['image']['name'];
+$fileTmpName = $_FILES['file3']['tmp_name'];
+$fileName = $_FILES['file3']['name'];
 $fileExt = explode('.',$fileName);
-$fileActExt = strtolower(end());
+$file = $_FILES['file3'];
+print_r($file);
+die();
+$fileActExt = strtolower($fileExt);
 $fileNewName = uniqid('',true).".".$fileActExt;
 $fileDestination = "image/".$fileNewName;
 $sql="INSERT INTO person (login,fname,lname,role,password,picture) VALUES
 ('$_POST[login]','$_POST[fname]','$_POST[lname]',
-'$_POST[role]','$_POST[pwd]','$fileTmpName')";
+'$_POST[role]','$_POST[pwd]','$fileDestination')";
 
 if (!mysqli_query($con,$sql))
   {
   die('Error in mysqli_query');
   }
 
-move_uploaded_file($fileTmpName, $fileDestination);
+move_uploaded_file($fileNewName, $fileDestination);
 header("Location: index2.php?success");
 
  /*$sql = 'SELECT * FROM person';
