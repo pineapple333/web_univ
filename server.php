@@ -31,7 +31,7 @@ if (isset($_POST['login'])) {
       if($_SESSION['login']==='admin_log'){
         header('location: admin.php');
       }else{
-        header('location: index.php');
+        header('location: user.php');
       }
   	}else {
   		array_push($errors, "Wrong login/password combination");

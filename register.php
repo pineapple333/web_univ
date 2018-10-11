@@ -1,6 +1,5 @@
 <?php include('server.php') ?>
 <?php
-session_start();
   if(isset($_POST['submit'])){
   	$login = $_POST['login'];
     $role = $_POST['role'];

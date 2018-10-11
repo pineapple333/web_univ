@@ -24,5 +24,6 @@
   		<button type="submit" class="btn" name="login_user">Login</button>
   	</div>
   </form>
+  <p> <a href="viewer.php?submit='1'" style="color: red">continue as a viewer</a> </p>
 </body>
 </html>
