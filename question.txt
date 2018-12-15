@@ -3,3 +3,5 @@
 3. Проблема с загрузкой ссылок на картинку (вопросы доступа: временная папка -> конечная папка)
 
 4.Основное: сделать вывод кнопки регистрации для админа
+
+sort, search, all editing is done thorough 'ajax', when one edits his own record he/she should see his/her own old data, think about pictures.

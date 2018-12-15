@@ -2,6 +2,8 @@
 <html>
 <head>
 	<title>User registration</title>
+	<script src="script/jquery-1.8.1.js"></script>
+	<script src = "script/script.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
@@ -9,38 +11,33 @@
 		<h2>Register </h2>
 	</div>
 	<!--Display error messages here -->
-	<form id = "myForm" action="myReg.php" method="post" entype = "multipart/form-data"> <!-- id-->
+	<form id = "myForm" method="post" entype = "multipart/form-data"> <!-- action was added, id was added-->
 		<div class="input-group">
 			<label>login</label>
-			<input type="text" name="login">
+			<input type="text" id = "login">
 		</div>
 		<div class="input-group">
 			<label>Role</label>
-			<input type="text" name="role">
+			<input type="text" id = "role">
 		</div>
 		<div class="input-group">
 			<label>First name</label>
-			<input type="text" name="fname">
+			<input type="text" id = "fname">
 		</div>
 		<div class="input-group">
 			<label>Second name</label>
-			<input type="text" name="lname">
+			<input type="text" id = "lname">
 		</div>
 		<div class="input-group">
 			<label>Password</label>
-			<input type="text" name="password_1">
+			<input type="text" id = "pwd">
 		</div>
 		<div class="input-group">
 			<label>Submit</label>
-			<button type="submit" name="submit" id = "sub" class="btn">Register</button> <!-- this id = "sub" might cause trobles-->
+			<div id="sub">press me</div>
 		</div>
 		<p> <a href="admin.php?submit='1'" style="color: red;">Back to 'admin' page</a> </p>
 	</form>
-	
-	<span id = "result"></span>
-	
-	<script src="script/jquery-1.8.1.min.js" type = "text/javascript"></script>
-	<script src="script/main.js" type = "text/javascript"></script>
 	
 </body>
 </html>

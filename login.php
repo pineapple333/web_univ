@@ -1,4 +1,5 @@
-<?php include('server.php') ?>
+<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,21 +10,24 @@
   <div class="header">
   	<h2>Login</h2>
   </div>
+  <script src="script/jquery-1.8.1.js"></script>
+<script src = "script/script.js"></script>
 	 
-  <form method="post" action="login.php">
-  	<?php include('errors.php'); ?>
+  <form method="post" entype = "multipart/form-data">
+  	<?php //include('errors.php'); ?>
   	<div class="input-group">
   		<label>login</label>
-  		<input type="text" name="login" >
+  		<input type="text" id = "log">
   	</div>
   	<div class="input-group">
   		<label>Password</label>
-  		<input type="password" name="password">
+  		<input type="password" id = "pwd">
   	</div>
-  	<div class="input-group">
-  		<button type="submit" class="btn" name="login_user">Login</button>
-  	</div>
+
   </form>
+    	<div class="input-group">
+  		<div id = "presslog">login</div>
+  	</div>
   <p> <a href="viewer.php?submit='1'" style="color: red">continue as a viewer</a> </p>
 </body>
 </html>

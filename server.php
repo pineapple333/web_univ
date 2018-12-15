@@ -9,10 +9,9 @@ $errors = array();
 $db = mysqli_connect('localhost', 'root', '', 'testing');
 
 // LOGIN USER
-if (isset($_POST['login'])) {
 
-  $login = mysqli_real_escape_string($db, $_POST['login']);
-  $password = mysqli_real_escape_string($db, $_POST['password']);
+  $login =  $_POST['log'];
+  $password = $_POST['pwd'];
 
   if (empty($login)) {
   	array_push($errors, "Login is required");
@@ -29,14 +28,13 @@ if (isset($_POST['login'])) {
   	  $_SESSION['login'] = $login;
   	  $_SESSION['success'] = "You are now logged in";
       if($_SESSION['login']==='admin_log'){
-        header('location: admin.php');
+      //  header('location: admin.php');
       }else{
-        header('location: user.php');
+       // header('location: user.php');
       }
   	}else {
   		array_push($errors, "Wrong login/password combination");
   	}
   }
-}
 
 ?>

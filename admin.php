@@ -84,9 +84,9 @@ if (!$con)
     mysqli_close($db);
   ?>
     </tbody>
-        <p> <a href="register.php?submit='1'" style="color: red">register someone</a> </p>
-        <p> <a href="delete.php?submit='1'" style="color: red">delete someone</a> </p>
-        <p> <a href="edit.php?submit='1'" style="color: red">edit someone</a> </p>
+        <p> <a href="register.html?submit='1'" style="color: red">register someone</a> </p>
+        <p> <a href="delete.html?submit='1'" style="color: red">delete someone</a> </p>
+        <p> <a href="edit.html?submit='1'" style="color: red">edit someone</a> </p>
 </table>
 
 </body>
