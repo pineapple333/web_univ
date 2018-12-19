@@ -1,12 +1,19 @@
 <?php
+
+//I might transform this part into class style
+
+require_once ('classes\connection_class.php');
 session_start();
 
 // initializing variables
 $login = "";
 $errors = array(); 
 
+//creating an object for OOP
+$conn = OpenCon();
+
 // connect to the database
-$db = mysqli_connect('localhost', 'root', '', 'testing');
+//$db = mysqli_connect('localhost', 'root', '', 'testing');
 
 // LOGIN USER
 
@@ -36,5 +43,7 @@ $db = mysqli_connect('localhost', 'root', '', 'testing');
   		array_push($errors, "Wrong login/password combination");
   	}
   }
+  
+  CloseCon($conn);
 
 ?>

@@ -1,6 +1,20 @@
 <?php session_start(); ?>
 <?php 
-	$con = mysqli_connect("127.0.0.1", "root", "", "testing");
+	require_once('classes\edit_server_class.php');
+	require_once('classes\connection_class.php');
+	$con = OpenCon();
+	//create the object to edit someone
+	$EditObj = new EditServerClass;
+  
+	//execute meethods in the oreder needed
+	$EditObj->get_params($_POST['old_login'], $_POST['new_login'], $_POST['fname'],
+						$_POST['lname'], $_POST['role'], $_POST['pwd']);
+	
+	$EditObj->create_query();
+	$EditObj->exec_query($con);
+	
+	CloseCon($con);
+/*
 if (!$con)
   {
   die('Could not connect: ' . mysqli_error());
@@ -30,4 +44,5 @@ if (!$con)
 		echo $newrecord = "1 record edited";
 	}
 	mysqli_close($con);
+	*/
 ?>
